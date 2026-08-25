@@ -1,0 +1,74 @@
+{
+  "id": "alpine-minimal",
+  "name": "Alpine Minimal",
+  "description": {
+    "en": "A compact, high-contrast layout for modern teams.",
+    "de": "Kompaktes Layout mit hohem Kontrast für moderne Teams."
+  },
+  "previewImage": "/previews/alpine-minimal.svg",
+  "fields": [
+    {
+      "key": "name",
+      "type": "text",
+      "required": true,
+      "label": {
+        "en": "Full name",
+        "de": "Vollständiger Name"
+      }
+    },
+    {
+      "key": "title",
+      "type": "text",
+      "required": true,
+      "label": {
+        "en": "Role",
+        "de": "Rolle"
+      }
+    },
+    {
+      "key": "company",
+      "type": "text",
+      "required": true,
+      "label": {
+        "en": "Company",
+        "de": "Unternehmen"
+      }
+    },
+    {
+      "key": "phone",
+      "type": "tel",
+      "required": true,
+      "label": {
+        "en": "Phone",
+        "de": "Telefon"
+      }
+    },
+    {
+      "key": "email",
+      "type": "email",
+      "required": true,
+      "label": {
+        "en": "Email",
+        "de": "E-Mail"
+      }
+    },
+    {
+      "key": "website",
+      "type": "url",
+      "required": true,
+      "label": {
+        "en": "Website",
+        "de": "Webseite"
+      }
+    },
+    {
+      "key": "logoUrl",
+      "type": "url",
+      "required": true,
+      "label": {
+        "en": "Logo URL",
+        "de": "Logo-URL"
+      }
+    }
+  ]
+}

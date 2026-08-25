@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="380" viewBox="0 0 860 380" fill="none">
+  <rect width="860" height="380" fill="#f5f8fc"/>
+  <rect x="45" y="40" width="770" height="300" rx="20" fill="white" stroke="#d9e4f2"/>
+  <rect x="90" y="105" width="180" height="70" rx="8" fill="#005a9c"/>
+  <text x="110" y="148" font-family="Arial" font-size="24" fill="white">Logo</text>
+  <line x1="320" y1="86" x2="320" y2="292" stroke="#005a9c" stroke-width="4"/>
+  <text x="350" y="130" font-family="Arial" font-size="30" font-weight="700" fill="#12233e">Max Mustermann</text>
+  <text x="350" y="165" font-family="Arial" font-size="20" fill="#2d5b83">Solutions Architect</text>
+  <text x="350" y="205" font-family="Arial" font-size="18" fill="#12233e">Example Company</text>
+  <text x="350" y="232" font-family="Arial" font-size="16" fill="#0f4e84">T: +1 555 0100</text>
+  <text x="350" y="257" font-family="Arial" font-size="16" fill="#0f4e84">E: max@example.com</text>
+  <text x="350" y="282" font-family="Arial" font-size="16" fill="#0f4e84">W: example.com</text>
+</svg>

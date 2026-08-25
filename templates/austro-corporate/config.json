@@ -1,0 +1,74 @@
+{
+  "id": "austro-corporate",
+  "name": "Austro Corporate",
+  "description": {
+    "en": "Structured corporate signature for modern email clients.",
+    "de": "Strukturierte Unternehmenssignatur für moderne E-Mail-Clients."
+  },
+  "previewImage": "/previews/austro-corporate.svg",
+  "fields": [
+    {
+      "key": "name",
+      "type": "text",
+      "required": true,
+      "label": {
+        "en": "Full name",
+        "de": "Vollständiger Name"
+      }
+    },
+    {
+      "key": "title",
+      "type": "text",
+      "required": true,
+      "label": {
+        "en": "Job title",
+        "de": "Position"
+      }
+    },
+    {
+      "key": "company",
+      "type": "text",
+      "required": true,
+      "label": {
+        "en": "Company",
+        "de": "Unternehmen"
+      }
+    },
+    {
+      "key": "phone",
+      "type": "tel",
+      "required": true,
+      "label": {
+        "en": "Phone",
+        "de": "Telefon"
+      }
+    },
+    {
+      "key": "email",
+      "type": "email",
+      "required": true,
+      "label": {
+        "en": "Email",
+        "de": "E-Mail"
+      }
+    },
+    {
+      "key": "website",
+      "type": "url",
+      "required": true,
+      "label": {
+        "en": "Website",
+        "de": "Webseite"
+      }
+    },
+    {
+      "key": "logoUrl",
+      "type": "url",
+      "required": true,
+      "label": {
+        "en": "Logo URL",
+        "de": "Logo-URL"
+      }
+    }
+  ]
+}

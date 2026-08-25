@@ -1,0 +1,49 @@
+{
+  "domains": {
+    "example.com": {
+      "templateId": "austro-corporate",
+      "company": "Example Company",
+      "locale": "de",
+      "defaults": {
+        "website": "https://www.example.com",
+        "phone": "+1 555 0100",
+        "address": "Main Street 1, 10001 City, Country",
+        "slogan": "Clarity in every interaction.",
+        "disclaimer": "If you received this message in error, please delete it immediately for privacy reasons."
+      },
+      "fixed": {
+        "company": "Example Company",
+        "website": "https://www.example.com"
+      },
+      "fieldOverrides": {
+        "company": {
+          "editable": false,
+          "required": true
+        },
+        "website": {
+          "editable": false,
+          "required": true,
+          "includeMode": "always"
+        },
+        "logoUrl": {
+          "editable": false,
+          "required": false,
+          "includeMode": "optional",
+          "includeDefault": true
+        },
+        "bannerUrl": {
+          "editable": false,
+          "required": false,
+          "includeMode": "optional",
+          "includeDefault": true
+        },
+        "disclaimer": {
+          "editable": true,
+          "required": false,
+          "includeMode": "optional",
+          "includeDefault": false
+        }
+      }
+    }
+  }
+}
