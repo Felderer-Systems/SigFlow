@@ -135,6 +135,7 @@ export async function POST(request: Request) {
       : fallbackLogoUrl ? withCacheBuster(fallbackLogoUrl, assetVersion)
       : localLogoUrl;
 
+    const mappedBannerUrl = toStringValue(mapping.bannerUrl);
     const fallbackBannerUrl =
       toStringValue(mapping.fixed?.bannerUrl) ?? toStringValue(mapping.defaults?.bannerUrl);
     const localBannerAsset = await findTemplateBannerAssetFilename(mapping.templateId);
@@ -146,7 +147,9 @@ export async function POST(request: Request) {
         )
       : undefined;
     const resolvedBannerUrl =
-      fallbackBannerUrl ? withCacheBuster(fallbackBannerUrl, assetVersion) : localBannerUrl;
+      mappedBannerUrl ? withCacheBuster(mappedBannerUrl, assetVersion)
+      : fallbackBannerUrl ? withCacheBuster(fallbackBannerUrl, assetVersion)
+      : localBannerUrl;
 
     const prefill: Record<string, TemplateValue> = {
       name: parseNameFromEmail(email),

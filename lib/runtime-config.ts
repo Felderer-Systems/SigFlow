@@ -6,6 +6,25 @@ const booleanFromString = z
   .default('false')
   .transform((value) => value === 'true');
 
+const smtpAddressSchema = z.string().email();
+
+const smtpFromSchema = z
+  .string()
+  .trim()
+  .min(1)
+  .refine((value) => {
+    if (smtpAddressSchema.safeParse(value).success) {
+      return true;
+    }
+
+    const namedAddressMatch = value.match(/^[^<>]+<([^<>]+)>$/);
+    if (!namedAddressMatch) {
+      return false;
+    }
+
+    return smtpAddressSchema.safeParse(namedAddressMatch[1].trim()).success;
+  }, 'Invalid SMTP_FROM format. Use email@domain.tld or Name <email@domain.tld>.');
+
 const envSchema = z.object({
   NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
   PORT: z.coerce.number().int().positive().default(3000),
@@ -33,7 +52,7 @@ const envSchema = z.object({
   SMTP_SECURE: booleanFromString,
   SMTP_USER: z.string().min(1),
   SMTP_PASS: z.string().min(1),
-  SMTP_FROM: z.string().email(),
+  SMTP_FROM: smtpFromSchema,
   SMTP_REPLY_TO: z.string().email().optional(),
   SMTP_CONNECTION_TIMEOUT_MS: z.coerce.number().int().positive().default(10000),
   SMTP_GREETING_TIMEOUT_MS: z.coerce.number().int().positive().default(10000),

@@ -37,6 +37,7 @@ export interface DomainMapping {
   templateId: string;
   company: string;
   logoUrl?: string;
+  bannerUrl?: string;
   locale?: Locale;
   defaults?: Record<string, TemplateValue>;
   fixed?: Record<string, TemplateValue>;

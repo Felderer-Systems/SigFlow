@@ -7,6 +7,26 @@ import type {
   TemplateValue,
 } from '@/types/template';
 
+function readStringValue(value: TemplateValue | undefined): string | undefined {
+  return typeof value === 'string' && value.trim().length > 0 ? value : undefined;
+}
+
+function hasForcedMediaValue(mapping: DomainMapping, key: 'logoUrl' | 'bannerUrl'): boolean {
+  if (key === 'logoUrl') {
+    return Boolean(
+      readStringValue(mapping.logoUrl) ??
+      readStringValue(mapping.fixed?.logoUrl) ??
+      readStringValue(mapping.defaults?.logoUrl),
+    );
+  }
+
+  return Boolean(
+    readStringValue(mapping.bannerUrl) ??
+    readStringValue(mapping.fixed?.bannerUrl) ??
+    readStringValue(mapping.defaults?.bannerUrl),
+  );
+}
+
 export function applyDomainFieldPolicy(
   template: TemplateConfig,
   mapping: DomainMapping,
@@ -20,15 +40,25 @@ export function applyDomainFieldPolicy(
         return null;
       }
 
+      const isForcedMediaField =
+        (field.key === 'logoUrl' || field.key === 'bannerUrl') &&
+        override?.editable === false &&
+        hasForcedMediaValue(mapping, field.key);
+
+      const effectiveIncludeMode =
+        isForcedMediaField ? (override?.includeMode ?? 'always')
+        : field.type === 'checkbox' ? 'always'
+        : (override?.includeMode ?? field.includeMode ?? 'always');
+
       return {
         ...field,
         required: override?.required ?? field.required,
         editable: override?.editable ?? field.editable ?? true,
-        includeMode:
-          field.type === 'checkbox' ?
-            'always'
-          : (override?.includeMode ?? field.includeMode ?? 'always'),
-        includeDefault: override?.includeDefault ?? field.includeDefault,
+        includeMode: effectiveIncludeMode,
+        includeDefault:
+          isForcedMediaField ?
+            (override?.includeDefault ?? true)
+          : (override?.includeDefault ?? field.includeDefault),
       };
     })
     .filter((field): field is TemplateField => field !== null);
